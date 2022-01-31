@@ -14,4 +14,7 @@ export class Country implements ICountry{
         return get(this, 'data.flag');
     }
     
+    get latlng(): Array<number> {
+        return get(this, 'data.latlng');
+    }
 }

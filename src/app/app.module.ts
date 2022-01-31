@@ -7,6 +7,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { AppRoutingModule } from './app-routing.module';
+import { AgmCoreModule } from '@agm/core';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 
@@ -22,7 +23,10 @@ import { FormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     MatSelectModule,
     FormsModule,
-    DragDropModule
+    DragDropModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAMWNsJUp5d1ScifyyrEF6Qs_JcFNGc8Lg'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

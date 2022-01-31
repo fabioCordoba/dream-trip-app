@@ -20,12 +20,21 @@ export class ListCountriesComponent implements OnInit {
   public regionSelected: string;
   public load: boolean;
 
+  public markers: any[];
+  public lat: number;
+  public lng: number;
+  public zoom: number;
+
   constructor(private countryService: CountryService) {
     this.load = false;
     this.listRegions = [];
     this.listCountries = [];
     this.listCountriesToVisit = [];
     this.regionSelected = 'EU';
+    this.markers = [];
+    this.lat = 0;
+    this.lng = 0;
+    this.zoom = 2;
   }
 
   ngOnInit() {
@@ -73,6 +82,29 @@ export class ListCountriesComponent implements OnInit {
                         event.container.data,
                         event.previousIndex,
                         event.currentIndex);
+
+      if (event.container.id === "visit") {
+        // añadir marcador
+        let c = event.container.data[event.currentIndex];
+        this.markers.push({
+          position: {
+            lat: c.latlng[0],
+            lng: c.latlng[1],
+          },
+          label: {
+            color: 'black',
+            text: c.name
+          }
+        });
+      } else {
+        // eliminar marcador
+        let c = event.container.data[event.currentIndex];
+
+        let index = this.markers.findIndex(m => m.label.text === c.name);
+
+        this.markers.splice(index, 1);
+
+      }
     }
   }
 

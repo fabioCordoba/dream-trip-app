@@ -1,4 +1,5 @@
 export interface ICountry {
     name: string,
-    flag: string
+    flag: string,
+    latlng: Array<number>
 }
